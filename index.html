@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>
+            <strong>
+            <pre>Explain : 
+        function counter(){
+            var counter = 0;
+                function IncreaseCounter() {
+                    return counter += 1;
+                    };
+                return IncreaseCounter;
+                    }    
+            var a = counter();
+            alert(a());
+            alert(a());
+            alert(a());
+            alert(a());
+                </pre>
+            </strong>
+            <ul>
+                Output will be:- <br> 1 <br> 2 <br> 3 <br> 4 
+                <li>
+                    This is a nested function which contains a function inside it and the inner function is following lexical environment in which the function searches the value of variable in its parents and at the time of invoking the main function we have declared that function inside a variable. As many times we try call the function the value will be plus 1 from last printed number. In the function "IncreaseCounter()" is getting the value from variable "counter" which is declared inside main function and returning it by adding 1 each time it is called.
+                </li>
+            </ul>
+        </li> <hr>
+
+        <li>
+            <strong>
+                <pre>let count = 0;
+                    (function () {
+                      if (count === 0) {
+                        let count = 1;
+                        console.log(count); // What is logged?
+                      }
+                      console.log(count); // What is logged?
+                    })();</pre>
+            </strong>
+          <p>The output will be 1 and 0. <br> 1 is for if condition and 0 is for last console.log
+            the if condition count is comparing its value from the count variable which is declared globally.
+            This is a self invoke function which is containing an "If condition" that if the variable count's value is 0 then declare one variable inside the self invoke function  named count whose value will be 1. And then next line is saying that print the value of count variable which is declared inside the function whose value is 1. And the anoymous function which is written inside self invoke function is saying that print the value of count variable which is declared globally.</p>
+        </li> <hr>
+
+        <li> 
+            <strong>
+                <pre>
+                    for(var i = 0; i<3; i++){
+                        setTimeout(()=>{
+                            console.log(i)
+                        }, 1000)
+                    }
+                </pre>
+            </strong>
+            <p>Output will be:- 3 3 3.
+                This is because of var variable because var variabnle has a functional level scope instead of block level scope. If we use let on the place of var the output will be 0 1 2 beacuse of blocki level scope. Here the variable 'i' is passing the final value (3) to the console.log statement and it is beinmg printed for tyhree times after 1 second instead of 0 1 2. This scenario is of block level and function level scopes.</p>
+        </li> <hr>
+
+        <li>
+            <strong>
+                Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.
+            </strong>
+            <pre>function outer(length){
+                    function inner(width){
+                        console.log(length * width)
+                    }
+                    inner(2)
+                }
+                outer(3)
+            </pre>
+        </li> <hr>
+
+        <li>
+            <strong>
+                Take a variable in outer function and create an inner function to increase the counter every time it is called
+            </strong>
+            <pre>
+                function outer(){
+                    let a = 0;
+                     function inner(){
+                         for(a = 0; a < 10 ; a++){
+                             console.log(a)
+                         }
+                     }
+                     return inner()
+                }
+                console.log(outer())
+            </pre>
+        </li> <hr>
+
+        <li>
+            <strong>
+                <pre>"Print Output
+                    var a = 12;
+                    (function () {
+                      alert(a);
+                    })();"</pre>
+            </strong>
+            <p>
+                Outpout will be :- 12; This is a self invoking function which is called just after its declaration. Here in, there is a vartiable declared with var keyword with value "12" and simply it is called inside self invoking function.
+            </p>
+        </li> <hr>
+
+        <li>
+            <strong>
+                <pre>"var a = 10;
+                    var x = (function () {
+                      var a = 12;
+                      return function () {
+                        alert(a);
+                      };
+                    })();
+                    x();"</pre>
+            </strong>
+            <p>
+                The output will be 12 because "alert(a)" is following the lexical environment and taking the value of 'a' from its parent function. This is a first class functiopn because it is declared inside a variable and is also returning a function. The scenario is there is a variable whose value is a self invoke function whose return value is also a function which alerts the value of "a" which is declared in the parent function.
+            </p>
+        </li> <hr>
+    </ol>
+</body>
+</html>
