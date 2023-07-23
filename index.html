@@ -123,6 +123,33 @@
                 The output will be 12 because "alert(a)" is following the lexical environment and taking the value of 'a' from its parent function. This is a first class functiopn because it is declared inside a variable and is also returning a function. The scenario is there is a variable whose value is a self invoke function whose return value is also a function which alerts the value of "a" which is declared in the parent function.
             </p>
         </li> <hr>
+
+        <li>
+            var globalVar = "xyz";
+
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b'; 
+  console.log(
+        "outerArg = " + outerArg + "\n" +
+        "innerArg = " + innerArg + "\n" +
+        "outerVar = " + outerVar + "\n" +
+        "innerVar = " + innerVar + "\n" +
+        "globalVar = " + globalVar);
+})(456)    
+})(123)
+<p>
+Output will be:- <br>
+outerArg = 123 <br>
+innerArg = 456 <br>
+outerVar = a<br>
+innerVar = b<br>
+globalVar = xyz<br><br>
+
+Here there are 2 self invoke functions which are nested into one another. "outerArg" value is 123 because when we are calling the outer function, we have passed the argument "123". Inside the "outerArg" function we have declared the variable with 'var' keyword whose value is 'a' and inside outerArge function there is one more function named "innerFunc" whose parameter is "innerArg" and insisde thast function we have declare the variable with var keyword i.e "InnerVar = 'b'" and its argument is "456";</p>
+        </li>
     </ol>
 </body>
 </html>
